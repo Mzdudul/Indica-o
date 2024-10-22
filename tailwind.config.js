@@ -12,7 +12,11 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+		width:{
+			'100': '200rem'
+		},
   		colors: {
+			'real-gray': "#C7C7C7",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

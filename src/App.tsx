@@ -1,9 +1,10 @@
+import Header from "./components/header";
 
 
 function App() {
   return (
     <div>
-      <h1 className="text-black">olaa</h1>
+      <Header/>
     </div>
   );
 }
