@@ -13,10 +13,18 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
 		width:{
-			'100': '200rem'
+			'100': '200rem',
+			'708' : '44rem',
+			'448': '28rem',
+			'line' : '71rem'
 		},
   		colors: {
 			'real-gray': "#C7C7C7",
+			'border-input' : '#9F9F9F',
+			'bg-input' : '#D9D9D9',
+			'text-input' : '#727272',
+			'bg-button' : '#53A1E0',
+			'bg-line' : '#BBBBBB',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
