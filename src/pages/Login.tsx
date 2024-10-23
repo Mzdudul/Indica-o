@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -24,7 +25,9 @@ const Login = () => {
           </div>
           <div className="flex items-center justify-center mb-8">
             <button className="bg-[#53A1E0] w-[28rem] font-semibold text-xl h-12 rounded-xl">
+              <Link to='/usuario'>
               Entrar
+              </Link>
             </button>
           </div>
         </div>
