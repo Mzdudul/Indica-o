@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 const Login = () => {
   return (
     <>
@@ -25,14 +24,23 @@ const Login = () => {
           </div>
           <div className="flex items-center justify-center mb-8">
             <button className="bg-[#53A1E0] w-[28rem] font-semibold text-xl h-12 rounded-xl">
-              <Link to='/usuario' className="bg-[#53A1E0]">
-              Entrar
+              <Link to="/usuario" className="bg-[#53A1E0]">
+                Entrar
               </Link>
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-center mt-5">
-         <img className="w-8 flex items-center justify-center " src="/google.png" alt="Opção de login com google"/>
+        <div className="flex flex-col items-center justify-center mt-5">
+          <div className="bg-[#EBEBEB] h-7 -mt-8 w-36 flex items-center justify-center">
+            <p className="bg-[#EBEBEB] text-[#BBBBBB] text-lg">ou</p>
+          </div>
+          <button>
+            <img
+              className="w-12 mt-5 flex items-center justify-center bg-[#D9D9D9] p-2 rounded-full"
+              src="/google.png"
+              alt="Opção de login com google"
+            />
+          </button>
         </div>
       </div>
     </>

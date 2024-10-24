@@ -16,7 +16,8 @@ export default {
 			'100': '200rem',
 			'708' : '44rem',
 			'448': '28rem',
-			'line' : '71rem'
+			'line' : '71rem',
+			'border-r' : '53rem',
 		},
   		colors: {
 			'real-gray': "#C7C7C7",
@@ -25,6 +26,7 @@ export default {
 			'text-input' : '#727272',
 			'bg-button' : '#53A1E0',
 			'bg-line' : '#BBBBBB',
+			'nav-bar' : '#C7C7C7',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
