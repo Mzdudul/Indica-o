@@ -1,6 +1,41 @@
-import { Link } from "react-router-dom";
+import { auth } from '../firebaseConfig.ts';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useSnackbar } from 'notistack';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+
+  function login() {
+    window.location.href = '/usuario';
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // =Signed up
+        const user = userCredential.user;
+
+        navigate('/usuario');
+        enqueueSnackbar({
+          message: 'Usuario Logado com Sucesso!',
+          variant: 'success',
+        });
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+        enqueueSnackbar({
+          message: errorMessage,
+          variant: 'error',
+        });
+        // ..
+      });
+  }
+
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen ">
@@ -12,6 +47,8 @@ const Login = () => {
             <input
               className="bg-[#D9D9D9] border text-base text-[#727272] font-semibold border-[#9F9F9F] w-[44rem] h-12 rounded-xl p-3"
               type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="E-mail"
             />
           </div>
@@ -19,14 +56,17 @@ const Login = () => {
             <input
               className="bg-[#D9D9D9] border text-base text-[#727272] font-semibold border-[#9F9F9F] w-[44rem] h-12 rounded-xl p-3"
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Senha"
             />
           </div>
           <div className="flex items-center justify-center mb-8">
-            <button className="bg-[#53A1E0] w-[28rem] font-semibold text-xl h-12 rounded-xl">
-              <Link to="/usuario" className="bg-[#53A1E0]">
-                Entrar
-              </Link>
+            <button
+              onClick={login}
+              className="bg-[#53A1E0] w-[28rem] font-semibold text-xl h-12 rounded-xl"
+            >
+              Entrar
             </button>
           </div>
         </div>
