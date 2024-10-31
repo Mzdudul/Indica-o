@@ -27,6 +27,12 @@ export const usuario = [
     nome: "Gabriel da Goma",
     img: "/google.png",
     qrCode : "/qrCode.png",
-    link : "https://www.google.com/link-qr/QswSD341sdwa"
+    link : "https://www.google.com/link-qr"
+  }
+];
+export const indicacoes = [
+  { 
+    total: 3,
+    concluidas: 1
   }
 ];

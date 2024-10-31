@@ -38,7 +38,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-screen ">
+      <div className="flex flex-col bg-[#EBEBEB] items-center justify-center h-screen ">
         <div className="border-b-2 border-[#BBBBBB] pb-7 w-[71rem]">
           <div className="mb-14 flex itemns-center justify-center">
             <h1 className="text-3xl font-semibold">Faça Login</h1>
