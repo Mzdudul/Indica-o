@@ -40,7 +40,7 @@ const Usuario = () => {
                     </p>
                   </div>
 
-                  <button className="flex items-center justify-center gap-1 md:mt-0  mt-2 font-semibold bg-[#53A1E0] w-24 h-8 rounded-xl">
+                  <button className="flex items-center justify-center text-white gap-1 md:mt-0  mt-2 font-semibold bg-[#53A1E0] w-24 h-10 rounded-xl">
                     <Copy className="w-5" /> Copiar
                   </button>
                 </div>
