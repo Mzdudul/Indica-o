@@ -19,6 +19,10 @@ export default {
 			'line' : '71rem',
 			'border-r' : '53rem',
 		},
+		height: {
+			'128': '31.5rem',
+			'122': '30rem',
+		  },
   		colors: {
 			'real-gray': "#C7C7C7",
 			'border-input' : '#9F9F9F',

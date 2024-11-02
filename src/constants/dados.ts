@@ -33,6 +33,6 @@ export const usuario = [
 export const indicacoes = [
   { 
     total: 3,
-    concluidas: 1
+    aprovadas: 1
   }
 ];
