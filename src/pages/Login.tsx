@@ -1,90 +1,59 @@
-import { auth } from '../firebaseConfig.ts';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useSnackbar } from 'notistack';
+import { useAuth } from '../contexts/AuthContext';
+import { LogIn } from 'lucide-react';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { enqueueSnackbar } = useSnackbar();
+export default function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  function login() {
-    window.location.href = '/usuario';
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // =Signed up
-        const user = userCredential.user;
-
-        navigate('/usuario');
-        enqueueSnackbar({
-          message: 'Usuario Logado com Sucesso!',
-          variant: 'success',
-        });
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error);
-        enqueueSnackbar({
-          message: errorMessage,
-          variant: 'error',
-        });
-        // ..
-      });
-  }
+  const handleLogin = () => {
+    login();
+    navigate('/');
+  };
 
   return (
-    <>
-      <div className="flex flex-col bg-[#EBEBEB] items-center justify-center h-screen ">
-        <div className="border-b-2 border-[#BBBBBB] pb-7 w-[71rem]">
-          <div className="mb-14 flex itemns-center justify-center">
-            <h1 className="text-3xl font-semibold">Faça Login</h1>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
+        <div className="text-center">
+          <div className="mx-auto h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+            <LogIn className="h-6 w-6 text-blue-600" />
           </div>
-          <div className="flex items-center justify-center mb-12">
-            <input
-              className="bg-[#D9D9D9] border text-base text-[#727272] font-semibold border-[#9F9F9F] w-[44rem] h-12 rounded-xl p-3"
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="E-mail"
-            />
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+            Sistema de Indicações
+          </h2>
+          <p className="mt-2 text-sm text-gray-600">
+            Faça login para acessar o sistema
+          </p>
+        </div>
+        <form className="mt-8 space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <div className="rounded-md shadow-sm -space-y-px">
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                className="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Senha"
+                className="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+              />
+            </div>
           </div>
-          <div className="flex items-center justify-center mb-14">
-            <input
-              className="bg-[#D9D9D9] border text-base text-[#727272] font-semibold border-[#9F9F9F] w-[44rem] h-12 rounded-xl p-3"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Senha"
-            />
-          </div>
-          <div className="flex items-center justify-center mb-8">
+
+          <div>
             <button
-              onClick={login}
-              className="bg-[#53A1E0] w-[28rem] font-semibold text-xl h-12 rounded-xl"
+              onClick={handleLogin}
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
             >
               Entrar
             </button>
           </div>
-        </div>
-        <div className="flex flex-col items-center justify-center mt-5">
-          <div className="bg-[#EBEBEB] h-7 -mt-8 w-36 flex items-center justify-center">
-            <p className="bg-[#EBEBEB] text-[#BBBBBB] text-lg">ou</p>
-          </div>
-          <button>
-            <img
-              className="w-12 mt-5 flex items-center justify-center bg-[#D9D9D9] p-2 rounded-full"
-              src="/google.png"
-              alt="Opção de login com google"
-            />
-          </button>
-        </div>
+        </form>
       </div>
-    </>
+    </div>
   );
-};
-
-export default Login;
+}
